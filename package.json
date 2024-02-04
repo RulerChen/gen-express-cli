@@ -1,0 +1,12 @@
+{
+  "name": "gen-express-cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pub": "cd packages && npm publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

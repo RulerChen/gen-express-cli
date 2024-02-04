@@ -13,6 +13,13 @@
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/RulerChen/gen-express-cli?style=for-the-badge&logo=github">
 </div>
 
+<div align="center" style="display: flex; justify-content: center; gap: 10px;">
+
+[English](./README.md)
+[中文版本](./README.zh_TW.md)
+
+</div>
+
 ## ✨ Features
 
 - 🚀 **Quick Start**: Create a new project with a single command.

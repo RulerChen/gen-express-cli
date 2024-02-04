@@ -13,25 +13,25 @@
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/RulerChen/gen-express-cli?style=for-the-badge&logo=github">
 </div>
 
-## ✨ Features
+## ✨ 特色
 
-- 🚀 **Quick Start**: Create a new project with a single command.
-- 📦 **TypeScript Support**: Use TypeScript to develop your project.
+- 🚀 **快速開始**: 可以使用一行指令快速建立專案
+- 📦 **TypeScript 支援**: 可以選擇 TypeScript 開發專案
 
-## 📂 Quick Start
+## 📂 快速開始
 
 ```bash
 npx gen-express-cli <project-name>
 ```
 
-## 📖 Usage
+## 📖 使用方式
 
-![Usage](./docs/usage.png)
+![使用方式](./docs/usage.png)
 
-## 📚 License
+## 📚 授權
 
-This project is licensed under the terms of the MIT license.
+MIT 授權
 
-## 🤝 Contributing
+## 🤝 貢獻
 
-Contributions, issues and feature requests are welcome! Feel free to give your feedback and give me a star if you like this project.
+歡迎任何貢獻、問題和功能請求！如果你喜歡這個專案，請給我一顆星星。

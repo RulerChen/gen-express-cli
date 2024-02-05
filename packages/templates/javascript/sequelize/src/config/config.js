@@ -30,6 +30,4 @@ config = {
   },
 };
 
-console.log(process.env.APP_PORT);
-
 export default config;

@@ -3,7 +3,7 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["airbnb-base", "prettier"],
+  "extends": ["standard", "prettier"],
   "plugins": ["prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -21,13 +21,6 @@
         "bracketSameLine": false,
         "arrowParens": "always"
       }
-    ],
-    "import/extensions": [
-      "error",
-      {
-        "js": "ignorePackages"
-      }
-    ],
-    "no-console": "off"
+    ]
   }
 }

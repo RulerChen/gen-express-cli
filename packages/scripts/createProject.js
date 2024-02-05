@@ -6,9 +6,11 @@ import { runCommand } from '../utils/exec.js';
 
 async function createStructure(projectName, template) {
   const TEMPLATES_PATH = path.join(path.dirname(fileURLToPath(import.meta.url)), '../', 'templates');
+  const COMMON_PATH = path.join(TEMPLATES_PATH, 'common');
   const PROJECT_PATH = path.join(process.cwd(), projectName);
   try {
     await fsPromises.cp(path.join(TEMPLATES_PATH, template), PROJECT_PATH, { recursive: true });
+    await fsPromises.cp(COMMON_PATH, PROJECT_PATH, { recursive: true });
   } catch (error) {
     throw error;
   }

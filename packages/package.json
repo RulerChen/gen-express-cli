@@ -1,6 +1,6 @@
 {
-  "name": "gen-express-cli-test",
-  "version": "0.0.3",
+  "name": "gen-express-cli",
+  "version": "0.0.0",
   "description": "A simple express cli to generate express app simply by running a command",
   "main": "index.js",
   "type": "module",
@@ -28,7 +28,7 @@
   "author": "RulerChen",
   "license": "MIT",
   "bin": {
-    "gen-express-cli-test": "index.js"
+    "gen-express-cli": "index.js"
   },
   "dependencies": {
     "chalk": "^5.3.0",

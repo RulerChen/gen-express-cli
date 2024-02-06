@@ -11,6 +11,7 @@ async function createStructure(projectName, template) {
   try {
     await fsPromises.cp(path.join(TEMPLATES_PATH, template), PROJECT_PATH, { recursive: true });
     await fsPromises.cp(COMMON_PATH, PROJECT_PATH, { recursive: true });
+    await fsPromises.rename(path.join(PROJECT_PATH, 'gitignore'), path.join(PROJECT_PATH, '.gitignore'));
   } catch (error) {
     throw error;
   }

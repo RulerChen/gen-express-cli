@@ -22,8 +22,10 @@
 
 ## ✨ Features
 
-- 🚀 **Quick Start**: Create a new project with a single command.
-- 📦 **TypeScript Support**: Use TypeScript to develop your project.
+- 📦 **Easy to use**
+- 📦 **TypeScript Support**
+- 📦 **ESM Support**
+- 📦 **Prettier & ESLint Support**
 
 ## 📂 Quick Start
 

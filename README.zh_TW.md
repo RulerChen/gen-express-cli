@@ -22,8 +22,10 @@
 
 ## ✨ 特色
 
-- 🚀 **快速開始**: 可以使用一行指令快速建立專案
-- 📦 **TypeScript 支援**: 可以選擇 TypeScript 開發專案
+- 📦 **簡單易用**
+- 📦 **TypeScript**
+- 📦 **ESM**
+- 📦 **Prettier & ESLint**
 
 ## 📂 快速開始
 

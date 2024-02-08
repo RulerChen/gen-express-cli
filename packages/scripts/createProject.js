@@ -1,17 +1,21 @@
-import fsPromises from 'fs/promises';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { createSpinner } from 'nanospinner';
+
+import { createBase } from './createBase.js';
+import { createLinter } from './createLinter.js';
+import { createPackageJson } from './createPackageJson.js';
+import { createTsConfig } from './createTsConfig.js';
+
 import { runCommand } from '../utils/exec.js';
 
-async function createStructure(projectName, template) {
-  const TEMPLATES_PATH = path.join(path.dirname(fileURLToPath(import.meta.url)), '../', 'templates');
-  const COMMON_PATH = path.join(TEMPLATES_PATH, 'common');
-  const PROJECT_PATH = path.join(process.cwd(), projectName);
+async function createStructure({ projectName, template, linter, unitTest, e2eTest }) {
   try {
-    await fsPromises.cp(path.join(TEMPLATES_PATH, template), PROJECT_PATH, { recursive: true });
-    await fsPromises.cp(COMMON_PATH, PROJECT_PATH, { recursive: true });
-    await fsPromises.rename(path.join(PROJECT_PATH, 'gitignore'), path.join(PROJECT_PATH, '.gitignore'));
+    await createBase(projectName, template);
+
+    await createPackageJson(projectName, template, linter);
+
+    if (linter) await createLinter(projectName, template);
+
+    if (template === 'typescript') await createTsConfig(projectName);
   } catch (error) {
     throw error;
   }
@@ -27,13 +31,15 @@ async function installDependencies(projectName, projectManager) {
   }
 }
 
-export default async function createProject({ projectName, template, projectManager }) {
+export default async function createProject({ projectName, template, projectManager, linter, unitTest, e2eTest }) {
+  console.log('createProject', projectName, template, projectManager, linter, unitTest, e2eTest);
   const spinner = createSpinner('Creating project...');
   try {
     spinner.start();
 
-    await createStructure(projectName, template);
+    await createStructure({ projectName, template, linter, unitTest, e2eTest });
     await installDependencies(projectName, projectManager);
+
     spinner.success({ text: 'Project created successfully' });
   } catch (error) {
     spinner.error({ text: 'Failed to create project' });

@@ -25,7 +25,7 @@
 ## 📂 Quick Start
 
 ```bash
-npx gen-express-cli <project-name>
+npx gen-express-cli@latest <project-name>
 
 cd <project-name>
 

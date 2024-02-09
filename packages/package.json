@@ -1,6 +1,6 @@
 {
   "name": "gen-express-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple express cli to generate express app simply by running a command",
   "main": "index.js",
   "type": "module",

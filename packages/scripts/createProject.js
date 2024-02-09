@@ -4,18 +4,19 @@ import { createBase } from './createBase.js';
 import { createLinter } from './createLinter.js';
 import { createPackageJson } from './createPackageJson.js';
 import { createTsConfig } from './createTsConfig.js';
+import { createUnitTest } from './createUnitTest.js';
+import { createE2E } from './createE2E.js';
 
 import { runCommand } from '../utils/exec.js';
 
 async function createStructure({ projectName, template, linter, unitTest, e2eTest }) {
   try {
     await createBase(projectName, template);
-
-    await createPackageJson(projectName, template, linter);
-
-    if (linter) await createLinter(projectName, template);
-
-    if (template === 'typescript') await createTsConfig(projectName);
+    await createPackageJson(projectName, template, linter, unitTest, e2eTest);
+    if (linter) await createLinter(projectName, template, unitTest);
+    if (template === 'typescript') await createTsConfig(projectName, unitTest);
+    if (unitTest === 'jest') await createUnitTest(projectName, template, unitTest);
+    if (e2eTest === 'supertest') await createE2E(projectName, template, e2eTest);
   } catch (error) {
     throw error;
   }

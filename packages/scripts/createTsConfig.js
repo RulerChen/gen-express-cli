@@ -2,14 +2,20 @@ import fsPromises from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-export async function createTsConfig(projectName) {
-  const SOURCE_PATH = path.join(path.dirname(fileURLToPath(import.meta.url)), '../', `templates/tsconfig`);
-  const TARGET_PATH = path.join(process.cwd(), projectName);
+export async function createTsConfig(projectName, unitTest) {
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
+  const tsconfigTempalte = JSON.parse(await fsPromises.readFile(path.resolve(__dirname, `../templates/tsconfig.json`), 'utf-8'));
+
+  const tsconfig = {
+    ...tsconfigTempalte,
+  };
+
+  if (unitTest === 'jest') {
+    tsconfig['compilerOptions']['types'].push('jest');
+  }
 
   try {
-    if (true) {
-      await fsPromises.copyFile(path.join(SOURCE_PATH, 'ts.json'), path.join(TARGET_PATH, 'tsconfig.json'));
-    }
+    await fsPromises.writeFile(path.resolve(process.cwd(), projectName, 'tsconfig.json'), JSON.stringify(tsconfig, null, 2));
   } catch (error) {
     throw error;
   }

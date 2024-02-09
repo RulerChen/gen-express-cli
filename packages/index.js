@@ -26,7 +26,10 @@ main(async (program) => {
   let template = program.opts()['template'] || (await printTemplate());
   let linter = program.opts()['linter'] || (await printLinter());
   let unitTest = program.opts()['unitTest'] || (await printUnitTest());
-  let e2eTest = program.opts()['e2eTest'] || (await printE2ETest());
+  let e2eTest = 'none';
+  if (unitTest !== 'none') {
+    e2eTest = program.opts()['e2eTest'] || (await printE2ETest());
+  }
   let projectManager = program.opts()['manager'] || (await printProjectManager());
 
   try {

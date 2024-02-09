@@ -13,29 +13,47 @@
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/RulerChen/gen-express-cli?style=for-the-badge&logo=github">
 </div>
 
-<div align="center" style="display: flex; justify-content: center; gap: 10px;">
-
-[English](/README.md)
-[中文版本](/README.zh_TW.md)
-
-</div>
-
 ## ✨ Features
 
 - 📦 **Easy to use**
 - 📦 **TypeScript Support**
 - 📦 **ESM Support**
 - 📦 **Prettier & ESLint Support**
+- 📦 **Jest Support (Unit Test)**
+- 📦 **SuperTest Support (E2E Test)**
 
 ## 📂 Quick Start
 
 ```bash
 npx gen-express-cli <project-name>
+
+cd <project-name>
+
+npm run lint # for lint
+npm run dev # for development
+npm run build # for typescript build
+npm run start # for production
+npm run test # for unit test
+npm run test:e2e # for e2e test
 ```
 
 ## 📖 Usage
 
 ![Usage](/docs/usage.png)
+
+```bash
+npx gen-express-cli --help
+
+Usage: gen-express-cli [project-name]
+
+Options:
+  -v, --version                     output the current version
+  -t, --template <template-name>    choose express template (choices: "javascript", "typescript")
+  -l, --linter <linter-name>        choose linter (choices: "eslint", "none")
+  -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
+  -e, --e2e-test <e2e-test-name>    choose e2e test (choices: "supertest", "none")
+  -h, --help                        display help for command
+```
 
 ## 📚 License
 

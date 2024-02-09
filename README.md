@@ -55,6 +55,32 @@ Options:
   -h, --help                        display help for command
 ```
 
+## 📂 Folder Structure
+
+```bash
+├─ src
+│  ├─ index.ts
+│  ├─ __tests__
+│  │  └─ user.spec.ts
+│  ├─ e2e
+│  │  └─ user.spec.ts
+│  ├─ controllers
+│  │  └─ user.ts
+│  ├─ models
+│  │  └─ user.ts
+│  └─ routes
+│     ├─ index.ts
+│     └─ user.ts
+├─ .eslintrc.json
+├─ .gitignore
+├─ .prettierrc.json
+├─ jest.config.ts
+├─ package-lock.json
+├─ package.json
+├─ README.md
+└─ tsconfig.json
+```
+
 ## 📚 License
 
 This project is licensed under the terms of the MIT license.

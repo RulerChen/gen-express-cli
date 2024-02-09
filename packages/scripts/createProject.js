@@ -33,7 +33,6 @@ async function installDependencies(projectName, projectManager) {
 }
 
 export default async function createProject({ projectName, template, projectManager, linter, unitTest, e2eTest }) {
-  console.log('createProject', projectName, template, projectManager, linter, unitTest, e2eTest);
   const spinner = createSpinner('Creating project...');
   try {
     spinner.start();

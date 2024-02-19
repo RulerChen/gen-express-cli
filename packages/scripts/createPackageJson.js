@@ -33,11 +33,13 @@ export async function createPackageJson(projectName, template, linter, unitTest,
     }
     if (unitTest === 'jest') {
       if (linter) packageJson.devDependencies['eslint-plugin-jest'] = '~27.6.3';
-      packageJson.scripts['test'] = 'node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=src/__tests__';
+      packageJson.scripts['test'] =
+        'jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false --testPathPattern=src/__tests__';
       packageJson.devDependencies['jest'] = '~29.7.0';
     }
     if (e2eTest === 'supertest') {
-      packageJson.scripts['test:e2e'] = 'node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=src/e2e';
+      packageJson.scripts['test:e2e'] =
+        'jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false --testPathPattern=src/e2e';
       packageJson.devDependencies['supertest'] = '~6.3.4';
     }
   }
@@ -65,13 +67,15 @@ export async function createPackageJson(projectName, template, linter, unitTest,
     }
     if (unitTest === 'jest') {
       if (linter) packageJson.devDependencies['eslint-plugin-jest'] = '~27.6.3';
-      packageJson.scripts['test'] = 'node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=src/__tests__';
+      packageJson.scripts['test'] =
+        'jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false --testPathPattern=src/__tests__';
       packageJson.devDependencies['jest'] = '~29.7.0';
       packageJson.devDependencies['ts-jest'] = '~29.1.2';
       packageJson.devDependencies['@types/jest'] = '~29.5.12';
     }
     if (e2eTest === 'supertest') {
-      packageJson.scripts['test:e2e'] = 'node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=src/e2e';
+      packageJson.scripts['test:e2e'] =
+        'jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false --testPathPattern=src/e2e';
       packageJson.devDependencies['supertest'] = '~6.3.4';
       packageJson.devDependencies['@types/supertest'] = '~6.0.2';
     }

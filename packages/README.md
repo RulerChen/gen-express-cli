@@ -20,6 +20,7 @@
 - 📦 **ESM Support**
 - 📦 **Prettier & ESLint Support**
 - 📦 **Jest Support (Unit Test)**
+- 📦 **Swagger Support**
 
 ## 📂 Quick Start
 
@@ -28,11 +29,13 @@ npx gen-express-cli@latest <project-name>
 
 cd <project-name>
 
-npm run lint # for lint
 npm run dev # for development
-npm run build # for typescript build
 npm run start # for production
+npm run build # for typescript build
+npm run lint # for eslint
+npm run format # for prettier
 npm run test # for unit test
+npm run swagger # for build swagger
 ```
 
 ## 📖 Usage
@@ -47,8 +50,9 @@ Usage: gen-express-cli [project-name]
 Options:
   -v, --version                     output the current version
   -t, --template <template-name>    choose express template (choices: "javascript", "typescript")
-  -l, --linter <linter-name>        choose linter (choices: "eslint", "none")
+  -l, --linter <linter-name>        choose linter (default: false)
   -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
+  -a, --api-doc                     use swagger for API documentation (default: false)
   -h, --help                        display help for command
 ```
 
@@ -66,13 +70,18 @@ Options:
 │  └─ routes
 │     ├─ index.ts
 │     └─ user.ts
+├─ .env
+├─ .env.development
 ├─ .eslintrc.json
 ├─ .gitignore
 ├─ .prettierrc.json
+├─ apidoc.json
 ├─ jest.config.ts
 ├─ package-lock.json
 ├─ package.json
+├─ process.env.d.ts
 ├─ README.md
+├─ swagger.ts
 └─ tsconfig.json
 ```
 

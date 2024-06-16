@@ -10,6 +10,6 @@
     "esModuleInterop": true,
     "types": ["node"]
   },
-  "include": ["process.env.d.ts", "./src/**/*.ts"],
+  "include": ["process.env.d.ts", "./**/*.ts"],
   "exclude": ["node_modules"]
 }

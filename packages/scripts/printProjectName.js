@@ -7,7 +7,7 @@ export default async function printProjectName() {
     const iq = await inquirer.prompt({
       name: 'projectName',
       type: 'input',
-      message: 'Project Name:',
+      message: 'Project Name: ',
       default: 'express-app',
     });
     projectName = iq.projectName;

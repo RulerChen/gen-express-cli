@@ -20,7 +20,6 @@
 - 📦 **ESM Support**
 - 📦 **Prettier & ESLint Support**
 - 📦 **Jest Support (Unit Test)**
-- 📦 **SuperTest Support (E2E Test)**
 
 ## 📂 Quick Start
 
@@ -34,12 +33,11 @@ npm run dev # for development
 npm run build # for typescript build
 npm run start # for production
 npm run test # for unit test
-npm run test:e2e # for e2e test
 ```
 
 ## 📖 Usage
 
-![Usage](/docs/usage.png)
+<!-- ![Usage](/docs/usage.png) -->
 
 ```bash
 npx gen-express-cli --help
@@ -51,7 +49,6 @@ Options:
   -t, --template <template-name>    choose express template (choices: "javascript", "typescript")
   -l, --linter <linter-name>        choose linter (choices: "eslint", "none")
   -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
-  -e, --e2e-test <e2e-test-name>    choose e2e test (choices: "supertest", "none")
   -h, --help                        display help for command
 ```
 
@@ -61,8 +58,6 @@ Options:
 ├─ src
 │  ├─ index.ts
 │  ├─ __tests__
-│  │  └─ user.spec.ts
-│  ├─ e2e
 │  │  └─ user.spec.ts
 │  ├─ controllers
 │  │  └─ user.ts

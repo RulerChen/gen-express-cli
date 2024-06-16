@@ -2,7 +2,7 @@ import fsPromises from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-export async function createPackageJson(projectName, template, linter, unitTest, e2eTest) {
+export async function createPackageJson(projectName, template, linter, unitTest) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const packageJsonTemplate = JSON.parse(await fsPromises.readFile(path.resolve(__dirname, `../templates/package.json`), 'utf-8'));
 
@@ -36,10 +36,6 @@ export async function createPackageJson(projectName, template, linter, unitTest,
       packageJson.scripts['test'] = 'node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=src/__tests__';
       packageJson.devDependencies['jest'] = '~29.7.0';
     }
-    if (e2eTest === 'supertest') {
-      packageJson.scripts['test:e2e'] = 'node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=src/e2e';
-      packageJson.devDependencies['supertest'] = '~6.3.4';
-    }
   }
 
   if (template === 'typescript') {
@@ -69,11 +65,6 @@ export async function createPackageJson(projectName, template, linter, unitTest,
       packageJson.devDependencies['jest'] = '~29.7.0';
       packageJson.devDependencies['ts-jest'] = '~29.1.2';
       packageJson.devDependencies['@types/jest'] = '~29.5.12';
-    }
-    if (e2eTest === 'supertest') {
-      packageJson.scripts['test:e2e'] = 'node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=src/e2e';
-      packageJson.devDependencies['supertest'] = '~6.3.4';
-      packageJson.devDependencies['@types/supertest'] = '~6.0.2';
     }
   }
 

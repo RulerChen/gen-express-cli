@@ -1,6 +1,6 @@
 import { program, Option } from 'commander';
 
-import { TEMPLATES, UNIT_TEST, E2E_TEST } from '../variables/templates.js';
+import { TEMPLATES, UNIT_TEST } from '../variables/templates.js';
 import { APP_VERSION } from '../variables/data.js';
 
 export default function main(callback) {
@@ -12,7 +12,6 @@ export default function main(callback) {
     .addOption(new Option('-t, --template <template-name>', 'choose express template').choices(Object.values(TEMPLATES)))
     .addOption(new Option('-l, --linter <linter-name>', 'choose linter').choices(['eslint', 'none']))
     .addOption(new Option('-u, --unit-test <unit-test-name>', 'choose unit test').choices(Object.values(UNIT_TEST)))
-    .addOption(new Option('-e, --e2e-test <e2e-test-name>', 'choose e2e test').choices(Object.values(E2E_TEST)))
     .action(() => callback(program));
 
   program.parse(process.argv);

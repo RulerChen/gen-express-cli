@@ -65,7 +65,7 @@ export async function createPackageJson(projectName, template, linter, unitTest,
     if (unitTest === 'jest') {
       if (linter) packageJson.devDependencies['eslint-plugin-jest'] = '^27';
       packageJson.scripts['test'] =
-        'jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false --testPathPattern=src/__tests__';
+        'jest --coverage=true -w=1 --forceExit --detectOpenHandles --watchAll=false --testPathPattern=src/__tests__ --testPathIgnorePatterns=build';
       packageJson.devDependencies['jest'] = '^29';
       packageJson.devDependencies['ts-jest'] = '^29';
       packageJson.devDependencies['@types/jest'] = '^29';

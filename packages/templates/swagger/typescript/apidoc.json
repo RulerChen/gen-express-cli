@@ -1,0 +1,33 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Gen Express CLI",
+    "description": "Gen Express CLI API Documentation",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8000/api",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/users/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  }
+}

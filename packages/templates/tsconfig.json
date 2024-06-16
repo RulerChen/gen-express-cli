@@ -3,6 +3,7 @@
     "target": "es6",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
     "baseUrl": "src",
     "outDir": "build",
     "sourceMap": true,
@@ -10,6 +11,6 @@
     "esModuleInterop": true,
     "types": ["node"]
   },
-  "include": ["process.env.d.ts", "./**/*.ts"],
+  "include": ["process.env.d.ts", "./**/*.ts", "swagger/javascript/swagger.js"],
   "exclude": ["node_modules"]
 }

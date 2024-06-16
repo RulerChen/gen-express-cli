@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 import { UNIT_TEST } from '../variables/templates.js';
 
-export default async function printProjectManager() {
+export default async function printUnitTest() {
   const iq = await inquirer.prompt({
     name: 'unitTest',
     type: 'list',

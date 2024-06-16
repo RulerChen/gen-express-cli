@@ -8,6 +8,7 @@ import printProjectName from './scripts/printProjectName.js';
 import printTemplate from './scripts/printTemplate.js';
 import printLinter from './scripts/printLinter.js';
 import printUnitTest from './scripts/printUnitTest.js';
+import printDocs from './scripts/printDocs.js';
 import printProjectManager from './scripts/printProjectManager.js';
 import createProject from './scripts/createProject.js';
 import isProjectExist from './utils/isProjectExist.js';
@@ -25,10 +26,13 @@ main(async (program) => {
   let template = program.opts()['template'] || (await printTemplate());
   let linter = program.opts()['linter'] || (await printLinter());
   let unitTest = program.opts()['unitTest'] || (await printUnitTest());
+  let apiDoc = program.opts()['apiDoc'] || (await printDocs());
   let projectManager = program.opts()['manager'] || (await printProjectManager());
 
+  // console.log(template, linter, unitTest, apiDoc, projectManager);
+
   try {
-    await createProject({ projectName, template, projectManager, linter, unitTest });
+    await createProject({ projectName, template, projectManager, linter, unitTest, apiDoc });
   } catch (error) {
     console.log(error);
   }

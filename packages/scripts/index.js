@@ -1,6 +1,6 @@
 import { program, Option } from 'commander';
 
-import { TEMPLATES, UNIT_TEST } from '../variables/templates.js';
+import { TEMPLATES, UNIT_TEST, PACKAGE_MANAGER } from '../variables/templates.js';
 import { APP_VERSION } from '../variables/data.js';
 
 export default function main(callback) {
@@ -13,6 +13,7 @@ export default function main(callback) {
     .addOption(new Option('-l, --linter <linter-name>', 'choose linter').default(false))
     .addOption(new Option('-u, --unit-test <unit-test-name>', 'choose unit test').choices(Object.values(UNIT_TEST)))
     .addOption(new Option('-a, --api-doc', 'use swagger for API documentation').default(false))
+    .addOption(new Option('-m, --manager <manager-name>', 'choose package manager').choices(PACKAGE_MANAGER))
     .action(() => callback(program));
 
   program.parse(process.argv);

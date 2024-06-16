@@ -29,9 +29,6 @@ async function installDependencies(projectName, projectManager, linter) {
   } else if (projectManager === 'yarn') {
     await runCommand(`cd ${projectName} && yarn && cd ..`);
     if (linter) await runCommand(`cd ${projectName} && yarn format && cd ..`);
-  } else if (projectManager === 'pnpm') {
-    await runCommand(`cd ${projectName} && pnpm install && cd ..`);
-    if (linter) await runCommand(`cd ${projectName} && pnpm run format && cd ..`);
   }
 }
 

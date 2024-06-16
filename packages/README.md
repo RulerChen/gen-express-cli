@@ -53,6 +53,7 @@ Options:
   -l, --linter <linter-name>        choose linter (default: false)
   -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
   -a, --api-doc                     use swagger for API documentation (default: false)
+  -m  --manager <package-manager>   choose package manager (choices: "npm", "yarn")
   -h, --help                        display help for command
 ```
 

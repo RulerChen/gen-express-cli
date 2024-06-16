@@ -23,6 +23,8 @@ export async function createPackageJson(projectName, template, linter, unitTest,
       packageJson.devDependencies['eslint-plugin-import'] = '^2';
       packageJson.devDependencies['eslint-plugin-prettier'] = '^5';
       packageJson.devDependencies['eslint-config-prettier'] = '^9';
+      packageJson.devDependencies['eslint-plugin-promise'] = '^6';
+      packageJson.devDependencies['eslint-plugin-n'] = '^16';
       packageJson.devDependencies['prettier'] = '^3';
     }
     if (unitTest === 'jest') {

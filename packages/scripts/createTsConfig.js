@@ -14,7 +14,7 @@ export async function createTsConfig(projectName, unitTest, alias) {
     tsconfig['compilerOptions']['types'].push('jest');
   }
   if (alias) {
-    tsconfig['plugins'] = [
+    tsconfig['compilerOptions']['plugins'] = [
       { transform: 'typescript-transform-paths' },
       { transform: 'typescript-transform-paths', afterDeclarations: true },
     ];

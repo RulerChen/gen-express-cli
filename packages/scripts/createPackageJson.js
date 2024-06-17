@@ -2,7 +2,7 @@ import fsPromises from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-export async function createPackageJson(projectName, template, linter, unitTest, apiDoc) {
+export async function createPackageJson(projectName, template, linter, unitTest, apiDoc, alias) {
   const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const packageJsonTemplate = JSON.parse(await fsPromises.readFile(path.resolve(__dirname, `../templates/package.json`), 'utf-8'));
 
@@ -38,6 +38,12 @@ export async function createPackageJson(projectName, template, linter, unitTest,
       packageJson.devDependencies['swagger-autogen'] = '^2';
       packageJson.devDependencies['swagger-ui-express'] = '^5';
     }
+    if (alias) {
+      packageJson.scripts['dev'] = 'cross-env NODE_ENV=development nodemon --loader esm-module-alias/loader --no-warnings ./src/index.js';
+      packageJson.scripts['start'] = 'cross-env NODE_ENV=production node --loader esm-module-alias/loader --no-warnings ./src/index.js';
+      packageJson.dependencies['esm-module-alias'] = '^2';
+      packageJson.aliases = { '@': './src' };
+    }
   }
 
   if (template === 'typescript') {
@@ -50,7 +56,7 @@ export async function createPackageJson(projectName, template, linter, unitTest,
     packageJson.devDependencies['@types/express'] = '^4';
     packageJson.devDependencies['@types/node'] = '^20';
     if (linter) {
-      packageJson.scripts['lint'] = 'eslint ./src/**/* --fix';
+      packageJson.scripts['lint'] = 'eslint ./src/**/*.ts --fix';
       packageJson.scripts['format'] = 'prettier --write ./**/*.{ts,json}';
       packageJson.devDependencies['eslint'] = '^8';
       packageJson.devDependencies['@typescript-eslint/eslint-plugin'] = '^6';
@@ -75,6 +81,14 @@ export async function createPackageJson(projectName, template, linter, unitTest,
       packageJson.devDependencies['swagger-autogen'] = '^2';
       packageJson.devDependencies['swagger-ui-express'] = '^5';
       packageJson.devDependencies['@types/swagger-ui-express'] = '^4';
+    }
+    if (alias) {
+      packageJson.scripts['dev'] =
+        'cross-env NODE_ENV=development nodemon -r tsconfig-paths/register --exec ts-node ./src/index.ts --files';
+      packageJson.scripts['build'] = 'tsc && tsc-alias';
+      packageJson.devDependencies['tsc-alias'] = '^1';
+      packageJson.devDependencies['tsconfig-paths'] = '^4';
+      packageJson.devDependencies['typescript-transform-paths'] = '^3';
     }
   }
 

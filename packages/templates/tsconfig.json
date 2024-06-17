@@ -4,13 +4,13 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "outDir": "build",
     "sourceMap": true,
     "strict": true,
     "esModuleInterop": true,
     "types": ["node"]
   },
-  "include": ["process.env.d.ts", "./**/*.ts", "swagger/javascript/swagger.js"],
+  "include": ["process.env.d.ts", "./**/*.ts"],
   "exclude": ["node_modules"]
 }

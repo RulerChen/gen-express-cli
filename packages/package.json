@@ -1,6 +1,6 @@
 {
   "name": "gen-express-cli",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "description": "A simple express cli to generate express app simply by running a command",
   "main": "index.js",
   "type": "module",
@@ -12,7 +12,7 @@
     "url": "https://github.com/RulerChen/gen-express-cli"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=20.0.0"
   },
   "scripts": {
     "start": "node index.js"

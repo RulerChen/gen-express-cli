@@ -9,14 +9,14 @@ import { createDoc } from './createDoc.js';
 
 import { runCommand } from '../utils/exec.js';
 
-async function createStructure({ projectName, template, linter, unitTest, apiDoc }) {
+async function createStructure({ projectName, template, linter, unitTest, apiDoc, alias }) {
   try {
-    await createBase(projectName, template);
-    await createPackageJson(projectName, template, linter, unitTest, apiDoc);
+    await createBase(projectName, template, alias);
+    await createPackageJson(projectName, template, linter, unitTest, apiDoc, alias);
     if (linter) await createLinter(projectName, template, unitTest);
-    if (template === 'typescript') await createTsConfig(projectName, unitTest);
-    if (unitTest === 'jest') await createUnitTest(projectName, template, unitTest);
-    if (apiDoc) await createDoc(projectName, template);
+    if (template === 'typescript') await createTsConfig(projectName, unitTest, alias);
+    if (unitTest === 'jest') await createUnitTest(projectName, template, unitTest, alias);
+    if (apiDoc) await createDoc(projectName, template, alias);
   } catch (error) {
     throw error;
   }
@@ -32,12 +32,12 @@ async function installDependencies(projectName, projectManager, linter) {
   }
 }
 
-export default async function createProject({ projectName, template, projectManager, linter, unitTest, apiDoc }) {
+export default async function createProject({ projectName, template, projectManager, linter, unitTest, apiDoc, alias }) {
   const spinner = createSpinner('Creating project...');
   try {
     spinner.start();
 
-    await createStructure({ projectName, template, linter, unitTest, apiDoc });
+    await createStructure({ projectName, template, linter, unitTest, apiDoc, alias });
     await installDependencies(projectName, projectManager, linter);
 
     spinner.success({ text: 'Project created successfully' });

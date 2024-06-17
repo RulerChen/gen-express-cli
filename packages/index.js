@@ -3,15 +3,20 @@
 import figlet from 'figlet';
 import chalk from 'chalk';
 import gradient from 'gradient-string';
+
 import main from './scripts/index.js';
+
 import printProjectName from './scripts/printProjectName.js';
 import printTemplate from './scripts/printTemplate.js';
 import printLinter from './scripts/printLinter.js';
 import printUnitTest from './scripts/printUnitTest.js';
 import printDocs from './scripts/printDocs.js';
+import printAlias from './scripts/printAlias.js';
 import printProjectManager from './scripts/printProjectManager.js';
-import createProject from './scripts/createProject.js';
+
 import isProjectExist from './utils/isProjectExist.js';
+import createProject from './scripts/createProject.js';
+
 import { APP_AUTHOR, APP_LICENSE, APP_NAME, APP_URL, APP_VERSION } from './variables/data.js';
 
 main(async (program) => {
@@ -27,12 +32,13 @@ main(async (program) => {
   let linter = program.opts()['linter'] || (await printLinter());
   let unitTest = program.opts()['unitTest'] || (await printUnitTest());
   let apiDoc = program.opts()['apiDoc'] || (await printDocs());
+  let alias = program.opts()['alias'] || (await printAlias());
   let projectManager = program.opts()['manager'] || (await printProjectManager());
 
   // console.log(template, linter, unitTest, apiDoc, projectManager);
 
   try {
-    await createProject({ projectName, template, projectManager, linter, unitTest, apiDoc });
+    await createProject({ projectName, template, projectManager, linter, unitTest, apiDoc, alias });
   } catch (error) {
     console.log(error);
   }

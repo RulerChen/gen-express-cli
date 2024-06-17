@@ -21,6 +21,7 @@
 - 📦 **Prettier & ESLint Support**
 - 📦 **Jest Support (Unit Test)**
 - 📦 **Swagger Support**
+- 📦 **Path Alias**
 
 ## 📂 Quick Start
 
@@ -53,6 +54,7 @@ Options:
   -l, --linter <linter-name>        choose linter (default: false)
   -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
   -a, --api-doc                     use swagger for API documentation (default: false)
+  -al, --alias                      use alias for import (default: false)
   -m  --manager <package-manager>   choose package manager (choices: "npm", "yarn")
   -h, --help                        display help for command
 ```

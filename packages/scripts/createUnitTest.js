@@ -6,12 +6,12 @@ export async function createUnitTest(projectName, template, unitTest, alias) {
   if (unitTest === 'none') return;
 
   try {
-    if (alias) unitTest += '-alias';
+    if (alias) template += '-alias';
     const __dirname = path.dirname(fileURLToPath(import.meta.url));
     const SOURCE_PATH = path.resolve(__dirname, `../templates/unit/${template}`);
     const TARGET_PATH = path.resolve(process.cwd(), projectName);
 
-    await fsPromises.cp(SOURCE_PATH, TARGET_PATH, { recursive: true });
+    await fsPromises.cp(SOURCE_PATH, TARGET_PATH, { recursive: true, force: true });
   } catch (error) {
     throw error;
   }

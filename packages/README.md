@@ -51,7 +51,7 @@ Usage: gen-express-cli [project-name]
 Options:
   -v, --version                     output the current version
   -t, --template <template-name>    choose express template (choices: "javascript", "typescript")
-  -l, --linter <linter-name>        choose linter (default: false)
+  -l, --linter                      choose linter (default: false)
   -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
   -a, --api-doc                     use swagger for API documentation (default: false)
   -al, --alias                      use alias for import (default: false)

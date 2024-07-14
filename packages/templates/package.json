@@ -12,11 +12,11 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2",
+    "cross-env": "^7",
     "dotenv": "^16",
     "express": "^4"
   },
   "devDependencies": {
-    "cross-env": "^7",
     "nodemon": "^3"
   }
 }

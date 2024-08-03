@@ -35,8 +35,8 @@ export async function createPackageJson(projectName, template, linter, unitTest,
     }
     if (apiDoc) {
       packageJson.scripts['swagger'] = 'node swagger.js';
+      packageJson.dependencies['swagger-ui-express'] = '^5';
       packageJson.devDependencies['swagger-autogen'] = '^2';
-      packageJson.devDependencies['swagger-ui-express'] = '^5';
     }
     if (alias) {
       packageJson.scripts['dev'] = 'cross-env NODE_ENV=development nodemon --loader esm-module-alias/loader --no-warnings ./src/index.js';
@@ -78,8 +78,8 @@ export async function createPackageJson(projectName, template, linter, unitTest,
     }
     if (apiDoc) {
       packageJson.scripts['swagger'] = 'ts-node swagger.ts';
+      packageJson.dependencies['swagger-ui-express'] = '^5';
       packageJson.devDependencies['swagger-autogen'] = '^2';
-      packageJson.devDependencies['swagger-ui-express'] = '^5';
       packageJson.devDependencies['@types/swagger-ui-express'] = '^4';
     }
     if (alias) {

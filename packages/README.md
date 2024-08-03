@@ -18,6 +18,7 @@
 - 📦 **Easy to use**
 - 📦 **TypeScript Support**
 - 📦 **ESM Support**
+- 📦 **Docker Support**
 - 📦 **Prettier & ESLint Support**
 - 📦 **Jest Support (Unit Test)**
 - 📦 **Swagger Support**
@@ -37,6 +38,8 @@ npm run lint # for eslint
 npm run format # for prettier
 npm run test # for unit test
 npm run swagger # for build swagger
+
+docker build -t <image-name> .
 ```
 
 ## 📖 Usage
@@ -54,6 +57,7 @@ Options:
   -l, --linter                      choose linter (default: false)
   -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
   -a, --api-doc                     use swagger for API documentation (default: false)
+  -d, --docker                      use docker for containerization (default: false)
   -al, --alias                      use alias for import (default: false)
   -m  --manager <package-manager>   choose package manager (choices: "npm", "yarn")
   -h, --help                        display help for command
@@ -73,12 +77,14 @@ Options:
 │  └─ routes
 │     ├─ index.ts
 │     └─ user.ts
+├─ .dockerignore
 ├─ .env
 ├─ .env.development
 ├─ .eslintrc.json
 ├─ .gitignore
 ├─ .prettierrc.json
 ├─ apidoc.json
+├─ Dockerfile
 ├─ jest.config.ts
 ├─ package-lock.json
 ├─ package.json

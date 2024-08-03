@@ -10,6 +10,7 @@ import printProjectName from './scripts/printProjectName.js';
 import printTemplate from './scripts/printTemplate.js';
 import printLinter from './scripts/printLinter.js';
 import printUnitTest from './scripts/printUnitTest.js';
+import printDocker from './scripts/printDocker.js';
 import printDocs from './scripts/printDocs.js';
 import printAlias from './scripts/printAlias.js';
 import printProjectManager from './scripts/printProjectManager.js';
@@ -31,6 +32,7 @@ main(async (program) => {
   let template = program.opts()['template'] || (await printTemplate());
   let linter = program.opts()['linter'] || (await printLinter());
   let unitTest = program.opts()['unitTest'] || (await printUnitTest());
+  let docker = program.opts()['docker'] || (await printDocker());
   let apiDoc = program.opts()['apiDoc'] || (await printDocs());
   let alias = program.opts()['alias'] || (await printAlias());
   let projectManager = program.opts()['manager'] || (await printProjectManager());
@@ -38,7 +40,7 @@ main(async (program) => {
   // console.log(template, linter, unitTest, apiDoc, projectManager);
 
   try {
-    await createProject({ projectName, template, projectManager, linter, unitTest, apiDoc, alias });
+    await createProject({ projectName, template, projectManager, linter, unitTest, docker, apiDoc, alias });
   } catch (error) {
     console.log(error);
   }

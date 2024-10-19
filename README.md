@@ -94,6 +94,46 @@ Options:
 └─ tsconfig.json
 ```
 
+## 📦 Dependencies
+
+```json
+[
+  "dependencies": {
+    "cors": "^2",
+    "cross-env": "^7",
+    "dotenv": "^16",
+    "express": "^4",
+    "swagger-ui-express": "^5"
+  },
+  "devDependencies": {
+    "nodemon": "^3",
+    "typescript": "~5.3",
+    "ts-node": "^10",
+    "@types/cors": "^2",
+    "@types/express": "^4",
+    "@types/node": "^20",
+    "eslint": "^8",
+    "@typescript-eslint/eslint-plugin": "^6",
+    "eslint-config-prettier": "^9",
+    "eslint-config-standard-with-typescript": "^43",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-n": "^16",
+    "eslint-plugin-prettier": "^5",
+    "eslint-plugin-promise": "^6",
+    "prettier": "^3",
+    "eslint-plugin-jest": "^27",
+    "jest": "^29",
+    "ts-jest": "^29",
+    "@types/jest": "^29",
+    "swagger-autogen": "^2",
+    "@types/swagger-ui-express": "^4",
+    "tsc-alias": "^1",
+    "tsconfig-paths": "^4",
+    "typescript-transform-paths": "^3"
+  }
+]
+```
+
 ## 📚 License
 
 This project is licensed under the terms of the MIT license.

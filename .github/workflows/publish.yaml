@@ -64,6 +64,6 @@ jobs:
           body: |
             🎉 **New Version Release** 🎉
 
-            ${{ env.CHANGELOG_CONTENT  }}
+            ${{ env.CHANGELOG_CONTENT }}
           draft: false
           prerelease: false

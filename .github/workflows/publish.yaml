@@ -53,5 +53,8 @@ jobs:
           release_name: Release ${{ env.TAG_NAME }}
           body: |
             🎉 **New Version Release** 🎉
+
+            # CHANGELOG
+            $(cat CHANGELOG.md)
           draft: false
           prerelease: false

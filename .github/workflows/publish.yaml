@@ -36,7 +36,6 @@ jobs:
             npm publish --tag $DIST_TAG
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
   release:
     needs: publish
     if: !contains(github.ref , '-beta')

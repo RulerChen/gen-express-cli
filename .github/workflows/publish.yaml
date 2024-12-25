@@ -34,6 +34,7 @@ jobs:
             npm publish
           else
             npm publish --tag $DIST_TAG
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

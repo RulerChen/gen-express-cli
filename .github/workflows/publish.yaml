@@ -51,7 +51,9 @@ jobs:
         id: changelog
         run: |
           CONTENT=$(cat CHANGELOG.md)
-          echo "content=$CONTENT" >> $GITHUB_ENV
+          echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
+          echo "$CONTENT" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
       - name: Create GitHub Release
         uses: comnoco/create-release-action@v2
         env:
@@ -62,7 +64,6 @@ jobs:
           body: |
             🎉 **New Version Release** 🎉
 
-            # CHANGELOG
-            ${{ env.content }}
+            ${{ env.CHANGELOG_CONTENT  }}
           draft: false
           prerelease: false

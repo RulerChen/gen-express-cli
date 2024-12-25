@@ -1,8 +1,11 @@
 name: Publish package to NPM
+
 on:
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
+      - '*-beta.*' # ex : v1.0.0-beta.1
+
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -12,6 +15,42 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: npm run pub
+      - name: Extract version and tag
+        id: version
+        run: |
+          TAG_NAME=${GITHUB_REF#refs/tags/}
+          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+
+          if [[ "$TAG_NAME" == *"-beta"* ]]; then
+            echo "DIST_TAG=beta" >> $GITHUB_ENV
+          else
+            echo "DIST_TAG=latest" >> $GITHUB_ENV
+          fi
+      - name: Install dependencies
+        run: npm install
+      - name: Publish package
+        run: |
+          if [ "$DIST_TAG" = "latest" ]; then
+            npm publish
+          else
+            npm publish --tag $DIST_TAG
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  release:
+    needs: publish
+    if: !contains(github.ref , '-beta')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create GitHub Release
+        uses: comnoco/create-release@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.TAG_NAME }}
+          release_name: Release ${{ env.TAG_NAME }}
+          body: |
+            🎉 **New Version Release** 🎉
+          draft: false
+          prerelease: false

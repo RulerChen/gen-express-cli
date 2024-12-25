@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 - Nothing yet.
 
+## [3.0.2] - 2024-12-25
+
+- [Fixed] Fix a bug in publish script.
+
 ## [3.0.1] - 2024-12-25
 
 - [Fixed] Fix a bug in auto release script.

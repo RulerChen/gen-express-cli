@@ -13,6 +13,10 @@
   <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/RulerChen/gen-express-cli?style=for-the-badge&logo=github">
 </div>
 
+## 📘 Introduction
+
+`gen-express-cli` is a alternative to `express-generator` with more features and easy to use. It is a command line tool that helps you to generate a new express project with TypeScript, ESM, Docker, Prettier, ESLint, Jest, Swagger, and Path Alias.
+
 ## ✨ Features
 
 - 📦 **Easy to use**

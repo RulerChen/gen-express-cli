@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 - Nothing yet.
 
+## [3.0.6] - 2024-12-29
+
+- [Updated] Update README.md file.
+
 ## [3.0.5] - 2024-12-25
 
 - [Added] Add .npmignore file.

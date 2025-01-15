@@ -2,6 +2,7 @@ import fsPromises from 'fs/promises';
 import path from 'path';
 
 export async function createJsConfig(projectName) {
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
   try {
     await fsPromises.copyFile(
       path.resolve(__dirname, `../templates/jsconfig.json`),

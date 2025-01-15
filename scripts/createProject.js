@@ -4,6 +4,7 @@ import { createBase } from './createBase.js';
 import { createLinter } from './createLinter.js';
 import { createPackageJson } from './createPackageJson.js';
 import { createDocker } from './createDocker.js';
+import { createJsConfig } from './createJsConfig.js';
 import { createTsConfig } from './createTsConfig.js';
 import { createUnitTest } from './createUnitTest.js';
 import { createDoc } from './createDoc.js';
@@ -17,6 +18,7 @@ async function createStructure({ projectName, template, linter, unitTest, docker
     if (linter) await createLinter(projectName, template, unitTest);
     if (docker) await createDocker(projectName, template);
     if (template === 'typescript') await createTsConfig(projectName, unitTest, alias);
+    if (template === 'javascript' && alias) await createJsConfig(projectName);
     if (unitTest === 'jest') await createUnitTest(projectName, template, unitTest, alias);
     if (apiDoc) await createDoc(projectName, template, alias);
   } catch (error) {

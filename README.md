@@ -48,7 +48,7 @@ docker build -t <image-name> .
 
 ## 📖 Usage
 
-<!-- ![Usage](/docs/usage.png) -->
+![Usage](/docs/usage.png)
 
 ```bash
 npx gen-express-cli --help

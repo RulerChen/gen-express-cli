@@ -1,0 +1,28 @@
+name: 🐛 Bug Report
+description: Report an issue or a bug in the project
+title: '[BUG] '
+labels: bug
+body:
+  - type: markdown
+    attributes:
+      value: 'Please provide the following details:'
+  - type: input
+    attributes:
+      label: Description
+      description: Briefly describe the issue
+      placeholder: 'Describe the issue'
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      description: List detailed steps to reproduce the issue
+      placeholder: "Step 1...\nStep 2..."
+  - type: textarea
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen?
+      placeholder: 'Describe the expected behavior'
+  - type: input
+    attributes:
+      label: Environment
+      description: Provide details about your environment, e.g., Node.js version
+      placeholder: 'Node.js v20 on Windows 11'

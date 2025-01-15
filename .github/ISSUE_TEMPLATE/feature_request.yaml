@@ -1,0 +1,20 @@
+name: ✨ Feature Request
+description: Suggest a new feature or improvement
+title: '[FEATURE] '
+labels: enhancement
+body:
+  - type: input
+    attributes:
+      label: Feature Description
+      description: Describe the feature you want to add
+      placeholder: 'Describe the feature'
+  - type: textarea
+    attributes:
+      label: Why is this feature needed?
+      description: Explain the purpose and value of this feature
+      placeholder: "Explain why it's needed"
+  - type: textarea
+    attributes:
+      label: Related Examples
+      description: If applicable, provide examples of similar features from other projects
+      placeholder: 'Examples or references'

@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file.
 
 - Nothing yet.
 
+## [3.1.0] - 2025-01-15
+
+- [Updated] Add jsconfig.json file to improve IDE IntelliSense support.
+
 ## [3.0.6] - 2024-12-29
 
 - [Updated] Update README.md file.

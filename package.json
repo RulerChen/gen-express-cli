@@ -1,34 +1,27 @@
 {
   "name": "gen-express-cli",
-  "version": "v3.1.0",
-  "description": "A simple express cli to generate express app simply by running a command",
+  "version": "3.2.0",
+  "description": "A simple express cli to generate express app simply by running a command, similar to express-generator",
   "main": "index.js",
+  "author": "RulerChen",
+  "license": "MIT",
   "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RulerChen/gen-express-cli.git"
   },
+  "homepage": "https://github.com/RulerChen/gen-express-cli#readme",
   "bugs": {
-    "url": "https://github.com/RulerChen/gen-express-cli"
+    "url": "https://github.com/RulerChen/gen-express-cli/issues"
   },
   "engines": {
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node ./src/index.js"
   },
-  "keywords": [
-    "gen-express-cli",
-    "node",
-    "express",
-    "cli",
-    "backend",
-    "express-generator"
-  ],
-  "author": "RulerChen",
-  "license": "MIT",
   "bin": {
-    "gen-express-cli": "index.js"
+    "gen-express-cli": "src/index.js"
   },
   "dependencies": {
     "chalk": "^5.3.0",
@@ -37,5 +30,24 @@
     "gradient-string": "^2.0.2",
     "inquirer": "^9.2.13",
     "nanospinner": "^1.1.0"
-  }
+  },
+  "files": [
+    "src/",
+    "docs/",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ],
+  "keywords": [
+    "node",
+    "node.js",
+    "express",
+    "express.js",
+    "express.js cli",
+    "express-generator",
+    "gen-express-cli",
+    "create-express-app",
+    "cli",
+    "backend"
+  ]
 }

@@ -3,8 +3,9 @@ name: Publish package to NPM
 on:
   push:
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+' # ex : 1.0.0
       - '*-beta.*' # ex : 1.0.0-beta.1
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -22,30 +23,56 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Extract version and tag
-        id: version
-        run: |
-          TAG_NAME=${GITHUB_REF#refs/tags/}
-          echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
 
-          if [[ "$TAG_NAME" == *"-beta"* ]]; then
-            echo "DIST_TAG=beta" >> $GITHUB_ENV
+      # - name: Extract version and tag
+      #   if: ${{ github.event_name == 'push' }}
+      #   id: version
+      #   run: |
+      #     TAG_NAME=${GITHUB_REF#refs/tags/}
+      #     echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+
+      #     if [[ "$TAG_NAME" == *"-beta"* ]]; then
+      #       echo "DIST_TAG=beta" >> $GITHUB_ENV
+      #     else
+      #       echo "DIST_TAG=latest" >> $GITHUB_ENV
+      #     fi
+
+      - name: Determine publish type
+        id: determine
+        run: |
+          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+            TAG_NAME=${GITHUB_REF#refs/tags/}
+            echo "Detected release tag: $TAG_NAME"
+            if [[ "$TAG_NAME" == *"-beta"* ]]; then
+              echo "Detected beta tag: $TAG_NAME"
+              echo "PUBLISH_TYPE=beta" >> $GITHUB_ENV
+              echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+            else
+              exit 0
+            fi
+          elif [[ "${GITHUB_REF}" == "refs/heads/main" ]]; then
+            echo "Detected push to main branch."
+            echo "PUBLISH_TYPE=latest" >> $GITHUB_ENV
           else
-            echo "DIST_TAG=latest" >> $GITHUB_ENV
+            echo "Detected push to non-main branch or non-tag push. Exiting."
+            exit 0
           fi
+
       - name: Update package version for beta release
-        if: contains(env.TAG_NAME, '-beta')
+        if: env.PUBLISH_TYPE == 'beta'
         run: |
           echo "Updating package.json version to $TAG_NAME"
           npm version "$TAG_NAME" --no-git-tag-version
+
       - name: Install dependencies
         run: npm install
+
       - name: Publish package
         run: |
-          if [ "$DIST_TAG" = "latest" ]; then
+          if [ "$PUBLISH_TYPE" = "latest" ]; then
             npm publish
           else
-            npm publish --tag $DIST_TAG
+            npm publish --tag beta
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -53,7 +80,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     needs: publish
-    if: ${{ !contains(github.ref , '-beta') }}
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v4
       - name: Read CHANGELOG
@@ -63,13 +90,20 @@ jobs:
           echo "CHANGELOG_CONTENT<<EOF" >> $GITHUB_ENV
           echo "$CONTENT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
+
+      - name: Read package.json
+        id: pkg
+        run: |
+          echo "::set-output name=json::$(cat package.json)"
+        shell: bash
+
       - name: Create GitHub Release
         uses: comnoco/create-release-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: ${{ github.ref_name }}
+          tag_name: 'v${{ fromJson(steps.pkg.outputs.json).version }}'
+          release_name: 'v${{ fromJson(steps.pkg.outputs.json).version }}'
           body: |
             🎉 **New Version Release** 🎉
 

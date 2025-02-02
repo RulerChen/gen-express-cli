@@ -2,11 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
-## [3.1.1] - 2025-02-02
+## [3.2.1] - 2025-02-02
 
 - [Updated] Update README.md file for better documentation.
 - [Updated] Update package.json file.
 - [Updated] Remove .npmignore file.
+- [Updated] Update github workflows.
 
 ## [3.1.0] - 2025-01-15
 

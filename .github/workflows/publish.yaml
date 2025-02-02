@@ -94,7 +94,7 @@ jobs:
       - name: Read package.json
         id: pkg
         run: |
-          echo "::set-output name=json::$(cat package.json)"
+          echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: Create GitHub Release
@@ -102,8 +102,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: 'v${{ fromJson(steps.pkg.outputs.json).version }}'
-          release_name: 'v${{ fromJson(steps.pkg.outputs.json).version }}'
+          tag_name: 'v${{ steps.pkg.outputs.VERSION }}'
+          release_name: 'v${{ steps.pkg.outputs.VERSION }}'
           body: |
             🎉 **New Version Release** 🎉
 

@@ -33,6 +33,11 @@ jobs:
           else
             echo "DIST_TAG=latest" >> $GITHUB_ENV
           fi
+      - name: Update package version for beta release
+        if: contains(env.TAG_NAME, '-beta')
+        run: |
+          echo "Updating package.json version to $TAG_NAME"
+          npm version "$TAG_NAME" --no-git-tag-version
       - name: Install dependencies
         run: npm install
       - name: Publish package

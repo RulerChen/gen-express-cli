@@ -9,5 +9,5 @@ export const APP_URL = 'https://github.com/RulerChen/gen-express-cli';
 export const APP_VERSION = getVersion();
 
 function getVersion() {
-  return JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../', 'package.json'))).version;
+  return JSON.parse(fs.readFileSync(path.join(path.dirname(fileURLToPath(import.meta.url)), '../../', 'package.json'))).version;
 }

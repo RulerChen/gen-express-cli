@@ -32,9 +32,13 @@
 
 ```bash
 npx gen-express-cli@latest <project-name>
+```
 
+```bash
 cd <project-name>
+```
 
+```bash
 npm run dev # for development
 npm run start # for production
 npm run build # for typescript build

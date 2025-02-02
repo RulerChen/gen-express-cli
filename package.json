@@ -1,6 +1,6 @@
 {
   "name": "gen-express-cli",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "A simple express cli to generate express app simply by running a command, similar to express-generator",
   "main": "index.js",
   "author": "RulerChen",
@@ -33,7 +33,6 @@
   },
   "files": [
     "src/",
-    "docs/",
     "package.json",
     "LICENSE",
     "README.md"

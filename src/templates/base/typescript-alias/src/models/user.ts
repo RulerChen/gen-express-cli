@@ -1,15 +1,13 @@
 interface User {
   name: string;
-  descrition: string;
+  description: string;
 }
 
 class UsersModel {
   users: User[];
 
   constructor() {
-    this.users = [
-      { name: 'RulerChen', descrition: 'Author of this project' },
-    ];
+    this.users = [{ name: 'RulerChen', description: 'Author of this project' }];
   }
 
   getUsers(): User[] {

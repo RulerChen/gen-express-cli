@@ -17,9 +17,9 @@ jobs:
         cli-arg: ['js', 'ts']
         include:
           - cli-arg: js
-            flags: '-t javascript -l -u jest -al -d false -a false -m npm'
+            flags: '-t javascript -l -u jest -al -d false -m npm'
           - cli-arg: ts
-            flags: '-t typescript -l -u jest -al -d false -a false -m npm'
+            flags: '-t typescript -l -u jest -al -d false -m npm'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

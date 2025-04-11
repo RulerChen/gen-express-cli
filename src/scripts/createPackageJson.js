@@ -31,11 +31,8 @@ export async function createPackageJson(projectName, template, linter, unitTest,
       packageJson.scripts['lint'] = 'eslint ./src/**/*.js --fix';
       packageJson.scripts['format'] = 'prettier --write ./**/*.{js,json}';
       packageJson.devDependencies['eslint'] = DEPENDENCY.eslint;
-      packageJson.devDependencies['eslint-config-standard'] = DEPENDENCY['eslint-config-standard'];
-      packageJson.devDependencies['eslint-plugin-import'] = DEPENDENCY['eslint-plugin-import'];
       packageJson.devDependencies['eslint-plugin-prettier'] = DEPENDENCY['eslint-plugin-prettier'];
       packageJson.devDependencies['eslint-config-prettier'] = DEPENDENCY['eslint-config-prettier'];
-      packageJson.devDependencies['eslint-plugin-promise'] = DEPENDENCY['eslint-plugin-promise'];
       packageJson.devDependencies['prettier'] = DEPENDENCY.prettier;
     }
 
@@ -68,11 +65,9 @@ export async function createPackageJson(projectName, template, linter, unitTest,
       packageJson.scripts['format'] = 'prettier --write ./**/*.{ts,json}';
       packageJson.devDependencies['eslint'] = DEPENDENCY.eslint;
       packageJson.devDependencies['@typescript-eslint/eslint-plugin'] = DEPENDENCY['@typescript-eslint/eslint-plugin'];
+      packageJson.devDependencies['@typescript-eslint/parser'] = DEPENDENCY['@typescript-eslint/parser'];
       packageJson.devDependencies['eslint-config-prettier'] = DEPENDENCY['eslint-config-prettier'];
-      packageJson.devDependencies['eslint-config-love'] = DEPENDENCY['eslint-config-love'];
-      packageJson.devDependencies['eslint-plugin-import'] = DEPENDENCY['eslint-plugin-import'];
       packageJson.devDependencies['eslint-plugin-prettier'] = DEPENDENCY['eslint-plugin-prettier'];
-      packageJson.devDependencies['eslint-plugin-promise'] = DEPENDENCY['eslint-plugin-promise'];
       packageJson.devDependencies['prettier'] = DEPENDENCY.prettier;
     }
 

@@ -17,11 +17,11 @@ export async function createLinter(projectName, template, unitTest) {
     }
   }
   if (template === 'typescript') {
-    linter['extends'][0] = 'eslint-config-love';
+    linter['parser'] = '@typescript-eslint/parser';
+    linter['extends'][0] = '@typescript-eslint';
     if (unitTest === 'jest') {
       linter['env']['jest/globals'] = true;
       linter['plugins'].unshift('jest');
-      linter['rules']['@typescript-eslint/unbound-method'] = 'off';
     }
   }
   try {

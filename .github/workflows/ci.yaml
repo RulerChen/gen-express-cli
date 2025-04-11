@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI
 
 on:
   push:
@@ -9,15 +9,17 @@ on:
 
 jobs:
   test-on-npm:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         node-version: [18.x, 20.x, 22.x]
-        cli-arg:
-        [
-          "-t javascript -l -u -al -d false -a false -m npm",
-          "-t typescript -l -u -al -d false -a false -m npm",
-        ]
+        cli-arg: ['js', 'ts']
+        include:
+          - cli-arg: js
+            flags: '-t javascript -l -u jest -al -d false -a false -m npm'
+          - cli-arg: ts
+            flags: '-t typescript -l -u jest -al -d false -a false -m npm'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,22 +29,38 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Test beta version on npm with args ${{ matrix.cli-arg }}
-        if: github.ref != 'refs/heads/main'
-        run: |
-          npx gen-express-cli@beta test-${{ matrix.cli-arg }} ${{ matrix.cli-args }}
-          cd test-${{ matrix.cli-arg }}
-          npm run dev
-          sleep 10
-          curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
-          kill $(lsof -t -i:8000) || true
+      - name: Print Node.js version
+        run: node -v
 
-      - name: Test latest version on npm with args ${{ matrix.cli-arg }}
-        if: github.ref == 'refs/heads/main'
+      - name: Install beta version  with args ${{ matrix.flags }}
+        if: github.ref != 'refs/heads/main'
+        shell: bash
         run: |
-          npx gen-express-cli@latest test-${{ matrix.cli-arg }} ${{ matrix.cli-args }}
-          cd test-${{ matrix.cli-arg }}
-          npm run dev
-          sleep 10
-          curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
-          kill $(lsof -t -i:8000) || true
+          npx gen-express-cli@beta test-${{ matrix.cli-arg }} ${{ matrix.flags }}
+
+      - name: Install latest version with args ${{ matrix.flags }}
+        if: github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          npx gen-express-cli@latest test-${{ matrix.cli-arg }} ${{ matrix.flags }}
+
+      - name: Start server
+        shell: bash
+        working-directory: test-${{ matrix.cli-arg }}
+        run: npm run dev &
+
+      - name: Wait for server to start
+        shell: bash
+        run: |
+          for i in {1..15}; do
+            curl -s http://localhost:8000/api && exit 0
+            echo "Waiting for server to start..."
+            sleep 1
+          done
+          echo "Server did not start in time" && exit 1
+
+      - name: Test api
+        shell: bash
+        working-directory: test-${{ matrix.cli-arg }}
+        run: |
+          curl -s http://localhost:8000/api | grep -q "This is the API root!" || exit 1

@@ -1,12 +1,8 @@
 {
-  "name": "gen-express-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon ./src/index.js",
-    "start": "cross-env NODE_ENV=production node ./src/index.js"
-  },
+  "scripts": {},
   "keywords": [],
   "author": "",
   "license": "ISC",

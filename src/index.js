@@ -4,7 +4,7 @@ import figlet from 'figlet';
 import chalk from 'chalk';
 import gradient from 'gradient-string';
 
-import main from './scripts/index.js';
+import main from './scripts/main.js';
 
 import printProjectName from './scripts/printProjectName.js';
 import printTemplate from './scripts/printTemplate.js';
@@ -33,14 +33,11 @@ main(async (program) => {
   let linter = program.opts()['linter'] || (await printLinter());
   let unitTest = program.opts()['unitTest'] || (await printUnitTest());
   let docker = program.opts()['docker'] || (await printDocker());
-  let apiDoc = program.opts()['apiDoc'] || (await printDocs());
   let alias = program.opts()['alias'] || (await printAlias());
   let projectManager = program.opts()['manager'] || (await printProjectManager());
 
-  // console.log(template, linter, unitTest, apiDoc, projectManager);
-
   try {
-    await createProject({ projectName, template, projectManager, linter, unitTest, docker, apiDoc, alias });
+    await createProject({ projectName, template, projectManager, linter, unitTest, docker, alias });
   } catch (error) {
     console.log(error);
   }

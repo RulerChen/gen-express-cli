@@ -5,7 +5,7 @@ import usersModel from '@/models/user';
 
 interface User {
   name: string;
-  descrition: string;
+  description: string;
 }
 
 describe('getAllUsers', () => {
@@ -17,8 +17,7 @@ describe('getAllUsers', () => {
     } as unknown as Response;
 
     usersModel.getUsers = jest.fn<() => User[]>().mockReturnValue([
-      { name: 'RulerChen', descrition: 'Author of this project' },
-      { name: 'joshtu0627', descrition: 'Author of this project' },
+      { name: 'RulerChen', description: 'Author of this project' },
     ]);
 
     UserController.getAllUsers(req, res);
@@ -26,8 +25,7 @@ describe('getAllUsers', () => {
     expect(usersModel.getUsers).toHaveBeenCalled();
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith([
-      { name: 'RulerChen', descrition: 'Author of this project' },
-      { name: 'joshtu0627', descrition: 'Author of this project' },
+      { name: 'RulerChen', description: 'Author of this project' },
     ]);
   });
 });

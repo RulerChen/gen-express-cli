@@ -1,6 +1,6 @@
 import { jest } from '@jest/globals';
-import UserController from '@/controllers/user.js';
-import usersModel from '@/models/user.js';
+import UserController from '#src/controllers/user.js';
+import usersModel from '#src/models/user.js';
 
 describe('getAllUsers', () => {
   it('should return all users', () => {

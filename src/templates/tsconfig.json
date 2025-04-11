@@ -8,6 +8,7 @@
     "outDir": "build",
     "sourceMap": true,
     "strict": true,
+    "isolatedModules": true,
     "esModuleInterop": true,
     "types": ["node"]
   },

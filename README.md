@@ -15,17 +15,19 @@
 
 ## 📘 Introduction
 
+> [!TIP]
+> GEN-EXPRESS-CLI now supports `express 5`! You can use the latest version of `express` with this CLI tool.
+
 `gen-express-cli` is a alternative to `express-generator` with more features and easy to use. It is a command line tool that helps you to generate a new express project with TypeScript, ESM, Docker, Prettier, ESLint, Jest, Swagger, and Path Alias.
 
 ## ✨ Features
 
-- 📦 **Easy to use**
-- 📦 **TypeScript Support**
-- 📦 **ESM Support**
-- 📦 **Docker Support**
-- 📦 **Prettier & ESLint Support**
-- 📦 **Jest Support (Unit Test)**
+- 📦 **ES Module**
+- 📦 **TypeScript**
+- 📦 **Prettier & ESLint**
+- 📦 **Jest**
 - 📦 **Path Alias**
+- 📦 **Dockerfile**
 
 ## 📂 Quick Start
 

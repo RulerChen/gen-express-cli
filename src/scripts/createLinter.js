@@ -19,7 +19,7 @@ export async function createLinter(projectName, template, unitTest) {
   }
   if (template === 'typescript') {
     linter['parser'] = '@typescript-eslint/parser';
-    linter['plugins'][0] = '@typescript-eslint';
+    linter['plugins'].push('@typescript-eslint');
 
     if (unitTest === 'jest') {
       linter['env']['jest/globals'] = true;

@@ -13,12 +13,12 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x, 20.x, 22.x]
-        cli-arg: ["js", "ts"]
+        cli-arg: ['js', 'ts']
         include:
           - cli-arg: js
-            flags: "-t javascript -l -u jest -al -d false -a false -m npm"
+            flags: '-t javascript -l -u jest -al -d false -a false -m npm'
           - cli-arg: ts
-            flags: "-t typescript -l -u jest -al -d false -a false -m npm"
+            flags: '-t typescript -l -u jest -al -d false -a false -m npm'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
           cd test-${{ matrix.cli-arg }}
           npm run dev &
           sleep 10
-          curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
+          curl -s http://localhost:8000/api | grep -q "This is the API root!" || exit 1
           kill $(lsof -t -i:8000) || true
 
       - name: Test latest version on npm with args ${{ matrix.flags }}
@@ -45,5 +45,5 @@ jobs:
           cd test-${{ matrix.cli-arg }}
           npm run dev &
           sleep 10
-          curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
+          curl -s http://localhost:8000/api | grep -q "This is the API root!" || exit 1
           kill $(lsof -t -i:8000) || true

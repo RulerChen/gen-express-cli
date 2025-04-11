@@ -1,6 +1,6 @@
 {
   "name": "gen-express-cli",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "A simple express cli to generate express app simply by running a command, similar to express-generator",
   "main": "index.js",
   "author": "RulerChen",

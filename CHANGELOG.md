@@ -1,7 +1,5 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
-
 ## [4.0] - 2025-04-12
 
 - [Feature] Add support for express 5.

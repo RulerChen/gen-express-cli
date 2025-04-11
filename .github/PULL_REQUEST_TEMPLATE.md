@@ -2,7 +2,7 @@
 
 ## Description
 
-Please describe this pull request and what it addresses:
+<!-- Please describe this pull request and what it addresses: -->
 
 - Linked Issue(s): #<issue_number>
 
@@ -10,14 +10,13 @@ Please describe this pull request and what it addresses:
 
 - [ ] New Feature
 - [ ] Bug Fix
+- [ ] Refactor
 - [ ] Documentation Update
 - [ ] Other (describe below)
 
-## Testing Steps
-
-Describe the expected behavior that this PR introduces:
-
 ## Checklist
 
-- [ ] Are there any documentation updates required?
-- [ ] Does this need additional review? (Yes/No)
+- [ ] CI tests
+- [ ] Publist beta version
+- [ ] Update CHANGELOG
+- [ ] Update README

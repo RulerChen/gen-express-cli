@@ -33,7 +33,7 @@ jobs:
         run: |
           npx gen-express-cli@beta test-${{ matrix.cli-arg }} ${{ matrix.flags }}
           cd test-${{ matrix.cli-arg }}
-          npm run dev
+          npm run dev &
           sleep 10
           curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
           kill $(lsof -t -i:8000) || true
@@ -43,7 +43,7 @@ jobs:
         run: |
           npx gen-express-cli@latest test-${{ matrix.cli-arg }} ${{ matrix.flags }}
           cd test-${{ matrix.cli-arg }}
-          npm run dev
+          npm run dev &
           sleep 10
           curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
           kill $(lsof -t -i:8000) || true

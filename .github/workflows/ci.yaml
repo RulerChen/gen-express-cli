@@ -9,9 +9,10 @@ on:
 
 jobs:
   test-on-npm:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
         node-version: [18.x, 20.x, 22.x]
         cli-arg: ['js', 'ts']
         include:

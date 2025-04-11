@@ -14,10 +14,10 @@ jobs:
       matrix:
         node-version: [18.x, 20.x, 22.x]
         cli-arg:
-        [
-          "-t javascript -l -u -al -d false -a false -m npm",
-          "-t typescript -l -u -al -d false -a false -m npm",
-        ]
+          [
+            "-t javascript -l -u -al -d false -a false -m npm",
+            "-t typescript -l -u -al -d false -a false -m npm",
+          ]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4

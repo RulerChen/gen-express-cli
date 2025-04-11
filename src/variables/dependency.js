@@ -1,5 +1,5 @@
 export const DEPENDENCY = {
-  express: '4.21.2',
+  express: '5.1.0',
   cors: '2.8.5',
   'cross-env': '7.0.3',
   dotenv: '16.5.0',

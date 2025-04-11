@@ -17,7 +17,7 @@ export async function createLinter(projectName, template, unitTest) {
     }
   }
   if (template === 'typescript') {
-    linter['extends'][0] = 'standard-with-typescript';
+    linter['extends'][0] = 'eslint-config-love';
     if (unitTest === 'jest') {
       linter['env']['jest/globals'] = true;
       linter['plugins'].unshift('jest');

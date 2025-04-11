@@ -29,22 +29,38 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Test beta version on npm with args ${{ matrix.flags }}
+      - name: Print Node.js version
+        run: node -v
+
+      - name: Install beta version  with args ${{ matrix.flags }}
         if: github.ref != 'refs/heads/main'
+        shell: bash
         run: |
           npx gen-express-cli@beta test-${{ matrix.cli-arg }} ${{ matrix.flags }}
-          cd test-${{ matrix.cli-arg }}
-          npm run dev &
-          sleep 10
-          curl -s http://localhost:8000/api | grep -q "This is the API root!" || exit 1
-          kill $(lsof -t -i:8000) || true
 
-      - name: Test latest version on npm with args ${{ matrix.flags }}
+      - name: Install latest version with args ${{ matrix.flags }}
         if: github.ref == 'refs/heads/main'
+        shell: bash
         run: |
           npx gen-express-cli@latest test-${{ matrix.cli-arg }} ${{ matrix.flags }}
-          cd test-${{ matrix.cli-arg }}
-          npm run dev &
-          sleep 10
+
+      - name: Start server
+        shell: bash
+        working-directory: test-${{ matrix.cli-arg }}
+        run: npm run dev &
+
+      - name: Wait for server to start
+        shell: bash
+        run: |
+          for i in {1..15}; do
+            curl -s http://localhost:8000/api && exit 0
+            echo "Waiting for server to start..."
+            sleep 1
+          done
+          echo "Server did not start in time" && exit 1
+
+      - name: Test api
+        shell: bash
+        working-directory: test-${{ matrix.cli-arg }}
+        run: |
           curl -s http://localhost:8000/api | grep -q "This is the API root!" || exit 1
-          kill $(lsof -t -i:8000) || true

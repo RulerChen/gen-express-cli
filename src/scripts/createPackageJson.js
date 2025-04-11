@@ -49,7 +49,7 @@ export async function createPackageJson(projectName, template, linter, unitTest,
     if (alias) {
       packageJson.scripts['dev'] = 'cross-env NODE_ENV=development nodemon ./src/index.js';
       packageJson.scripts['start'] = 'cross-env NODE_ENV=production node ./src/index.js';
-      packageJson.imports = { '#src': './src/*' };
+      packageJson.imports = { '#src/*': './src/*' };
     }
   }
 

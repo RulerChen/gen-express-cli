@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Test beta version on npm with args ${{ matrix.cli-arg }}
+      - name: Test beta version on npm with args ${{ matrix.cli-args.flags }}
         if: github.ref != 'refs/heads/main'
         run: |
           npx gen-express-cli@beta test-${{ matrix.cli-arg.dir }} ${{ matrix.cli-args.flags }}
@@ -37,7 +37,7 @@ jobs:
           curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
           kill $(lsof -t -i:8000) || true
 
-      - name: Test latest version on npm with args ${{ matrix.cli-arg }}
+      - name: Test latest version on npm with args ${{ matrix.cli-args.flags }}
         if: github.ref == 'refs/heads/main'
         run: |
           npx gen-express-cli@latest test-${{ matrix.cli-arg.dir }} ${{ matrix.cli-args.flags }}

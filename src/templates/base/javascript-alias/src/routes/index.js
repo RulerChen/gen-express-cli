@@ -1,6 +1,6 @@
 import express from 'express';
 
-import UserRoutes from '@/routes/user.js';
+import UserRoutes from '#src/routes/user.js';
 
 const router = express.Router();
 

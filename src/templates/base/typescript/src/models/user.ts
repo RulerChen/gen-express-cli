@@ -9,7 +9,6 @@ class UsersModel {
   constructor() {
     this.users = [
       { name: 'RulerChen', descrition: 'Author of this project' },
-      { name: 'joshtu0627', descrition: 'Author of this project' },
     ];
   }
 

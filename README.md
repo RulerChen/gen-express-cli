@@ -25,7 +25,6 @@
 - 📦 **Docker Support**
 - 📦 **Prettier & ESLint Support**
 - 📦 **Jest Support (Unit Test)**
-- 📦 **Swagger Support**
 - 📦 **Path Alias**
 
 ## 📂 Quick Start
@@ -45,7 +44,6 @@ npm run build # for typescript build
 npm run lint # for eslint
 npm run format # for prettier
 npm run test # for unit test
-npm run swagger # for build swagger
 
 docker build -t <image-name> .
 ```
@@ -64,7 +62,6 @@ Options:
   -t, --template <template-name>    choose express template (choices: "javascript", "typescript")
   -l, --linter                      choose linter (default: false)
   -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
-  -a, --api-doc                     use swagger for API documentation (default: false)
   -d, --docker                      use docker for containerization (default: false)
   -al, --alias                      use alias for import (default: false)
   -m  --manager <package-manager>   choose package manager (choices: "npm", "yarn")
@@ -91,56 +88,18 @@ Options:
 ├─ .eslintrc.json
 ├─ .gitignore
 ├─ .prettierrc.json
-├─ apidoc.json
 ├─ Dockerfile
 ├─ jest.config.ts
 ├─ package-lock.json
 ├─ package.json
 ├─ process.env.d.ts
 ├─ README.md
-├─ swagger.ts
 └─ tsconfig.json
 ```
 
 ## 📦 Dependencies
 
-```json
-[
-  "dependencies": {
-    "cors": "^2",
-    "cross-env": "^7",
-    "dotenv": "^16",
-    "express": "^4",
-    "swagger-ui-express": "^5"
-  },
-  "devDependencies": {
-    "nodemon": "^3",
-    "typescript": "~5.3",
-    "ts-node": "^10",
-    "@types/cors": "^2",
-    "@types/express": "^4",
-    "@types/node": "^20",
-    "eslint": "^8",
-    "@typescript-eslint/eslint-plugin": "^6",
-    "eslint-config-prettier": "^9",
-    "eslint-config-standard-with-typescript": "^43",
-    "eslint-plugin-import": "^2",
-    "eslint-plugin-n": "^16",
-    "eslint-plugin-prettier": "^5",
-    "eslint-plugin-promise": "^6",
-    "prettier": "^3",
-    "eslint-plugin-jest": "^27",
-    "jest": "^29",
-    "ts-jest": "^29",
-    "@types/jest": "^29",
-    "swagger-autogen": "^2",
-    "@types/swagger-ui-express": "^4",
-    "tsc-alias": "^1",
-    "tsconfig-paths": "^4",
-    "typescript-transform-paths": "^3"
-  }
-]
-```
+Please see [dependency.js](https://github.com/RulerChen/gen-express-cli/blob/main/src/variables/dependency.js) for more details.
 
 ## 📚 License
 

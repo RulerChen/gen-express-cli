@@ -1,4 +1,4 @@
-import usersModel from '@/models/user.js';
+import usersModel from '#src/models/user.js';
 
 function getAllUsers(req, res) {
   const users = usersModel.getUsers();

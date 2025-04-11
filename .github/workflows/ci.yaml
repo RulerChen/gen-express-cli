@@ -1,0 +1,48 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test-on-npm:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+        cli-arg:
+        [
+          "-t javascript -l -u -al -d false -a false -m npm",
+          "-t typescript -l -u -al -d false -a false -m npm",
+        ]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Test beta version on npm with args ${{ matrix.cli-arg }}
+        if: github.ref != 'refs/heads/main'
+        run: |
+          npx gen-express-cli@beta test-${{ matrix.cli-arg }} ${{ matrix.cli-args }}
+          cd test-${{ matrix.cli-arg }}
+          npm run dev
+          sleep 10
+          curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
+          kill $(lsof -t -i:8000) || true
+
+      - name: Test latest version on npm with args ${{ matrix.cli-arg }}
+        if: github.ref == 'refs/heads/main'
+        run: |
+          npx gen-express-cli@latest test-${{ matrix.cli-arg }} ${{ matrix.cli-args }}
+          cd test-${{ matrix.cli-arg }}
+          npm run dev
+          sleep 10
+          curl -s http://localhost:8000/ | grep -q "This is the API root!" || exit 1
+          kill $(lsof -t -i:8000) || true

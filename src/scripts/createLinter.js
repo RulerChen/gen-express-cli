@@ -13,12 +13,14 @@ export async function createLinter(projectName, template, unitTest) {
   if (template === 'javascript') {
     if (unitTest === 'jest') {
       linter['env']['jest/globals'] = true;
+      linter['extends'].push('eslint:recommended');
       linter['plugins'].unshift('jest');
     }
   }
   if (template === 'typescript') {
     linter['parser'] = '@typescript-eslint/parser';
-    linter['extends'][0] = '@typescript-eslint';
+    linter['plugins'][0] = '@typescript-eslint';
+
     if (unitTest === 'jest') {
       linter['env']['jest/globals'] = true;
       linter['plugins'].unshift('jest');

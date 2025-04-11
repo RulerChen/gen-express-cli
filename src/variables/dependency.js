@@ -7,7 +7,7 @@ export const DEPENDENCY = {
   eslint: '8.57.0',
   'eslint-config-prettier': '9.1.0',
   'eslint-plugin-prettier': '5.2.6',
-  'eslint-plugin-jest': '28.11.0"',
+  'eslint-plugin-jest': '28.11.0',
   '@typescript-eslint/eslint-plugin': '8.29.1',
   '@typescript-eslint/parser': '8.29.1',
   prettier: '3.5.3',

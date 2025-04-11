@@ -64,3 +64,16 @@ jobs:
         working-directory: test-${{ matrix.cli-arg }}
         run: |
           curl -s http://localhost:8000/api | grep -q "This is the API root!" || exit 1
+
+      - name: Test linter
+        shell: bash
+        working-directory: test-${{ matrix.cli-arg }}
+        run: |
+          npm run lint || exit 1
+          npm run format || exit 1
+
+      - name: Test unit test
+        shell: bash
+        working-directory: test-${{ matrix.cli-arg }}
+        run: |
+          npm run test || exit 1

@@ -15,93 +15,60 @@
 
 ## 📘 Introduction
 
-> [!NOTE]
-> `GEN-EXPRESS-CLI` now supports `express 5`! You can use the latest version of `express` with this CLI tool.
+`gen-express-cli` is a powerful and modern alternative to the default `express-generator`, designed to help you build structured, scalable, and production-ready Express applications—fast.
 
-`gen-express-cli` is a alternative to `express-generator` with more features and easy to use. It is a command line tool that helps you to generate a new express project with TypeScript, ESM, Docker, Prettier, ESLint, Jest, and Path Alias.
+With just a single command, it scaffolds a clean, opinionated project layout powered by TypeScript, ESM, testing, validation, environment configs, and more. Whether you're building a quick prototype or a maintainable backend for a real-world product, gen-express-cli provides everything you need to get started—without the boilerplate.
+
+Forget the chaos of manually setting up tools and project structure. This CLI gives you best practices out of the box, while keeping the flexibility and simplicity of Express.
 
 ## ✨ Features
 
-- 📦 **ES Module**
-- 📦 **TypeScript**
-- 📦 **Prettier & ESLint**
-- 📦 **Jest**
-- 📦 **Path Alias**
-- 📦 **Dockerfile**
+- 📦 Full ESM Support (TypeScript module: NodeNext)
+- 🧠 TypeScript with ready‑to‑use build scripts
+- 🧰 ESLint v9 (Flat Config) & Prettier preconfigured
+- 🧪 Unit Testing with Jest (ESM‑ready setup)
+- 🔌 E2E Testing with Jest & Supertest
+- 🛣️ Path Aliases (`#src/`) with runtime resolution
+- 🐳 Dockerfile for production builds
+- ⚙️ Environment Config Setup
+- ✅ Request Validation (with zod)
+- 🧾 Logger (with winston) & Error Handling
+- ⚙️ CI Templates (with GitHub Actions format/lint/test)
 
 ## 📂 Quick Start
 
 ```bash
+# Default (TypeScript)
 npx gen-express-cli@latest <project-name>
+
+# For JavaScript
+npx gen-express-cli@latest <project-name> --javascript
 ```
 
 ```bash
-cd <project-name>
+npm run dev           # for development
+npm run start         # for production
+npm run build         # for typescript build
+npm run lint          # for eslint
+npm run lint:fix      # for eslint fix
+npm run format        # for prettier
+npm run format:check  # for prettier check
+npm run type-check    # for typescript type check
+npm run test          # for unit test
+npm run test:cov      # for test coverage
+npm run test:e2e      # for e2e test
 ```
 
 ```bash
-npm run dev # for development
-npm run start # for production
-npm run build # for typescript build
-npm run lint # for eslint
-npm run format # for prettier
-npm run test # for unit test
-
-docker build -t <image-name> .
-```
-
-## 📖 Usage
-
-![Usage](/docs/usage.png)
-
-```bash
-npx gen-express-cli --help
-
-Usage: gen-express-cli [project-name]
-
-Options:
-  -v, --version                     output the current version
-  -t, --template <template-name>    choose express template (choices: "javascript", "typescript")
-  -l, --linter                      choose linter (default: false)
-  -u, --unit-test <unit-test-name>  choose unit test (choices: "jest", "none")
-  -d, --docker                      use docker for containerization (default: false)
-  -al, --alias                      use alias for import (default: false)
-  -m  --manager <package-manager>   choose package manager (choices: "npm", "yarn")
-  -h, --help                        display help for command
+docker build -t <image-name>:<image-tag> .
+docker run -p 8000:8000 <image-name>:<image-tag>
 ```
 
 ## 📂 Folder Structure
 
 ```bash
-├─ src
-│  ├─ index.ts
-│  ├─ __tests__
-│  │  └─ user.spec.ts
-│  ├─ controllers
-│  │  └─ user.ts
-│  ├─ models
-│  │  └─ user.ts
-│  └─ routes
-│     ├─ index.ts
-│     └─ user.ts
-├─ .dockerignore
-├─ .env
-├─ .env.development
-├─ .eslintrc.json
-├─ .gitignore
-├─ .prettierrc.json
-├─ Dockerfile
-├─ jest.config.ts
-├─ package-lock.json
-├─ package.json
-├─ process.env.d.ts
-├─ README.md
-└─ tsconfig.json
+
 ```
-
-## 📦 Dependencies
-
-Please see [dependency.js](https://github.com/RulerChen/gen-express-cli/blob/main/src/variables/dependency.js) for more details.
 
 ## 📚 License
 

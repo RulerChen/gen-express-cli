@@ -9,7 +9,7 @@ export default async function askTemplate() {
     choices() {
       return Object.keys(TEMPLATES);
     },
-    default: 'javaScript',
+    default: 'typescript',
   });
 
   return TEMPLATES[iq.template];

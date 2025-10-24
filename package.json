@@ -1,6 +1,6 @@
 {
   "name": "gen-express-cli",
-  "version": "4.0.3",
+  "version": "5.0.0",
   "description": "A simple express cli to generate express app simply by running a command, similar to express-generator",
   "main": "index.js",
   "author": "RulerChen",
@@ -15,7 +15,7 @@
     "url": "https://github.com/RulerChen/gen-express-cli/issues"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "start": "node ./src/index.js"
@@ -24,12 +24,12 @@
     "gen-express-cli": "src/index.js"
   },
   "dependencies": {
-    "chalk": "^5.3.0",
-    "commander": "^12.0.0",
-    "figlet": "^1.7.0",
-    "gradient-string": "^2.0.2",
-    "inquirer": "^9.2.13",
-    "nanospinner": "^1.1.0"
+    "chalk": "^5.6.2",
+    "commander": "^14.0.1",
+    "figlet": "^1.9.3",
+    "gradient-string": "^3.0.0",
+    "inquirer": "^12.10.0",
+    "nanospinner": "^1.2.2"
   },
   "files": [
     "src/",

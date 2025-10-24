@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    /* Modules */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolvePackageJsonExports": true,
+    "resolveJsonModule": true,
+
+    /* Language and Environment */
+    "target": "ES6",
+
+    /* Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "#src/*": ["./src/*"]
+    },
+    
+    /* Emit */
+    "outDir": "./dist",
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "removeComments": true,
+
+    /* Interop Constraints */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+
+    /* Type Checking */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitReturns": true,
+
+    /* Completeness */
+    "skipLibCheck": true,
+
+    /* Projects */
+    "incremental": true
+  }
+}

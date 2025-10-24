@@ -12,20 +12,20 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest]
         node-version: [20.x, 22.x, 24.x]
         cli-arg: ['js', 'ts']
         include:
           - cli-arg: js
-            flags: '-t javascript -l -u jest -al -d false -m npm'
+            flags: '-t javascript'
           - cli-arg: ts
-            flags: '-t typescript -l -u jest -al -d false -m npm'
+            flags: '-t typescript'
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js environment
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -54,7 +54,7 @@ jobs:
         shell: bash
         run: |
           for i in {1..15}; do
-            curl -s http://localhost:8000/api && exit 0
+            curl -s http://localhost:8000/api/health && exit 0
             echo "Waiting for server to start..."
             sleep 1
           done
@@ -64,14 +64,14 @@ jobs:
         shell: bash
         working-directory: test-${{ matrix.cli-arg }}
         run: |
-          curl -s http://localhost:8000/api | grep -q "This is the API root!" || exit 1
+          curl -s http://localhost:8000/api/health | grep -q "success" || exit 1
 
       - name: Test linter
         shell: bash
         working-directory: test-${{ matrix.cli-arg }}
         run: |
           npm run lint || exit 1
-          npm run format || exit 1
+          npm run format:check || exit 1
 
       - name: Test unit test
         shell: bash

@@ -42,7 +42,7 @@ Forget the chaos of manually setting up tools and project structure. This CLI gi
 npx gen-express-cli@latest <project-name>
 
 # For JavaScript
-npx gen-express-cli@latest <project-name> --javascript
+npx gen-express-cli@latest <project-name> -t javascript
 ```
 
 ```bash
@@ -53,20 +53,54 @@ npm run lint          # for eslint
 npm run lint:fix      # for eslint fix
 npm run format        # for prettier
 npm run format:check  # for prettier check
-npm run type-check    # for typescript type check
+npm run typecheck     # for typescript type check
 npm run test          # for unit test
+npm run test:watch    # for unit test in watch mode
 npm run test:cov      # for test coverage
 ```
 
 ```bash
-docker build -t <image-name>:<image-tag> .
-docker run -p 8000:8000 <image-name>:<image-tag>
+docker build -t my-express-app:1.0 .
+docker run -p 8000:8000 --env-file ./.env my-express-app:1.0 
 ```
 
 ## 📂 Folder Structure
 
-```bash
-
+```
+ts
+├─ .dockerignore
+├─ .nvmrc
+├─ .prettierignore
+├─ .prettierrc.json
+├─ Dockerfile
+├─ eslint.config.js
+├─ jest.config.ts
+├─ package-lock.json
+├─ package.json
+├─ README.md
+├─ src
+│  ├─ app.ts
+│  ├─ config
+│  │  └─ env.ts
+│  ├─ middlewares
+│  │  ├─ error-handler.ts
+│  │  ├─ index.ts
+│  │  ├─ logger.ts
+│  │  └─ validate.ts
+│  ├─ modules
+│  │  ├─ healthcheck
+│  │  │  ├─ healthcheck.controller.ts
+│  │  │  └─ healthcheck.route.ts
+│  │  └─ user
+│  │     ├─ user.controller.ts
+│  │     ├─ user.route.ts
+│  │     ├─ user.schema.ts
+│  │     ├─ user.service.test.ts
+│  │     ├─ user.service.ts
+│  │     └─ user.types.ts
+│  └─ server.ts
+├─ tsconfig.build.json
+└─ tsconfig.json
 ```
 
 ## 📚 License

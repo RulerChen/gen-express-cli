@@ -29,7 +29,7 @@ export const createApp = () => {
 
   app.use(morganMiddleware);
 
-  app.use('/', healthcheckRoutes);
+  app.use('/api', healthcheckRoutes);
   app.use('/api', userRoutes);
 
   app.use((_req, _res, next) => {

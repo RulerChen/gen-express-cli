@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node-version: [20.x, 22.x, 24.x]
+        node-version: [22.x, 24.x]
         cli-arg: ['js', 'ts']
         include:
           - cli-arg: js
@@ -52,7 +52,7 @@ jobs:
         shell: bash
         run: |
           for i in {1..15}; do
-            curl -s http://localhost:8000/health && exit 0
+            curl -s http://localhost:8000/api/health && exit 0
             echo "Waiting for server to start..."
             sleep 1
           done
@@ -62,7 +62,7 @@ jobs:
         shell: bash
         working-directory: test-${{ matrix.cli-arg }}
         run: |
-          curl -s http://localhost:8000/health | grep -q "success" || exit 1
+          curl -s http://localhost:8000/api/health | grep -q "success" || exit 1
 
       - name: Test linter
         shell: bash

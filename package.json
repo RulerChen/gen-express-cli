@@ -15,7 +15,7 @@
     "url": "https://github.com/RulerChen/gen-express-cli/issues"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "start": "node ./src/index.js"

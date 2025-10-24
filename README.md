@@ -38,11 +38,7 @@ Forget the chaos of manually setting up tools and project structure. This CLI gi
 ## 📂 Quick Start
 
 ```bash
-# Default (TypeScript)
 npx gen-express-cli@latest <project-name>
-
-# For JavaScript
-npx gen-express-cli@latest <project-name> -t javascript
 ```
 
 ```bash

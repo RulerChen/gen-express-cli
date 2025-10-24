@@ -17,6 +17,6 @@
 ## Checklist
 
 - [ ] CI tests
-- [ ] Publist beta version
+- [ ] Publish beta version
 - [ ] Update CHANGELOG
 - [ ] Update README

@@ -33,6 +33,7 @@ Forget the chaos of manually setting up tools and project structure. This CLI gi
 - ⚙️ Environment Config Setup
 - ✅ Request Validation (with zod)
 - 🧾 Logger (with winston) & Error Handling
+- ⚙️ CI Templates (with GitHub Actions format/lint/test)
 
 ## 📂 Quick Start
 

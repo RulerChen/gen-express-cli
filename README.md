@@ -24,16 +24,15 @@ Forget the chaos of manually setting up tools and project structure. This CLI gi
 ## ✨ Features
 
 - 📦 Full ESM Support (TypeScript module: NodeNext)
+- 📂 Organized Folder Structure (controllers, services, routes, middlewares, etc.)
 - 🧠 TypeScript with ready‑to‑use build scripts
 - 🧰 ESLint v9 (Flat Config) & Prettier preconfigured
 - 🧪 Unit Testing with Jest (ESM‑ready setup)
-- 🔌 E2E Testing with Jest & Supertest
 - 🛣️ Path Aliases (`#src/`) with runtime resolution
 - 🐳 Dockerfile for production builds
 - ⚙️ Environment Config Setup
 - ✅ Request Validation (with zod)
 - 🧾 Logger (with winston) & Error Handling
-- ⚙️ CI Templates (with GitHub Actions format/lint/test)
 
 ## 📂 Quick Start
 
@@ -56,7 +55,6 @@ npm run format:check  # for prettier check
 npm run type-check    # for typescript type check
 npm run test          # for unit test
 npm run test:cov      # for test coverage
-npm run test:e2e      # for e2e test
 ```
 
 ```bash
